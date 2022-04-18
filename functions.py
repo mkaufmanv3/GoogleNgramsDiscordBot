@@ -108,7 +108,6 @@ def getURL(query, start=1800, end=2019, smoothing=0, **kwargs):
       '&year_start=' + str(start) + '&year_end=' + str(end) +
       '&corpus=26&smoothing=' + str(smoothing) + '&case_insensitive=true'
     )
-    
     return url, search, start, end
 
 
