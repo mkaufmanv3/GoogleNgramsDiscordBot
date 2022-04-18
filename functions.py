@@ -26,15 +26,15 @@ from urllib.request import urlopen
 #                                                         #
 #*********************************************************#
 def normalize(timeseries):
-    nozeros = [x for x in timeseries if x != 0]                      # remove zeros from the timeseries
-    smallest = min(nozeros)                                          # find minimum value in the timeseries
-    norm = [round(value/smallest,5) for value in timeseries]         # normalize the timeseries to the smallest value
-    biggest = max(norm)                                              # find the maximum value in the normalized timeseries
+    nozeros = [x for x in timeseries if x != 0]                       # remove zeros from the timeseries
+    smallest = min(nozeros)                                           # find minimum value in the timeseries
+    norm = [round(value/smallest,5) for value in timeseries]          # normalize the timeseries to the smallest value
+    biggest = max(norm)                                               # find the maximum value in the normalized timeseries
     for i in range(len(norm)):
         if norm[i] == 1:
-            smallest_year = i+1800                                   # find the year in which the smallest value is reached
+            smallest_year = i+1800                                    # find the year in which the smallest value is reached
         if norm[i] == biggest:
-            biggest_year = i+1800                                    # find the year in which the biggest value is reached
+            biggest_year = i+1800                                     # find the year in which the biggest value is reached
     return norm, smallest_year, biggest_year
 
 
