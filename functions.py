@@ -71,13 +71,13 @@ def get(query):
 #*********************************************************#
 def getURL(query, start=1800, end=2019, smoothing=0, **kwargs):
     if ',' in query:
-        split_str = query.split(',')              # split query into list
-        if split_str[0][0] != '.':                # only accept queries beginning with '.'
+        split_str = query.split(',')                    # split query into list
+        if split_str[0][0] != '.':                      # only accept queries beginning with '.'
             return
         else:
-            search = split_str[0][1:]             # take everything from '.' to ',' for search string
+            search = split_str[0][1:]                   # take everything from '.' to ',' for search string
         if ' ' in search:
-            search = search.replace(' ', '+')     # spaces need to be '+'s in URL
+            search = search.replace(' ', '+')           # spaces need to be '+'s in URL
     
         for i in range(1, len(split_str)):
             if 'start' in split_str[i]:
@@ -90,17 +90,17 @@ def getURL(query, start=1800, end=2019, smoothing=0, **kwargs):
                 try: smoothing = int(split_str[i].split('=')[1])      # get smoothing value as int
                 except Exception as e: print(f"\n>>>  Error:  {e}")
     else:
-        search = query[1:]                        # search string is everything after '.' in query
+        search = query[1:]                              # search string is everything after '.' in query
         if ' ' in search:
-            search = search.replace(' ', '+')     # spaces need to be '+'s in URL
+            search = search.replace(' ', '+')           # spaces need to be '+'s in URL
     
-    if start > 2019 or start < 1500:              # start year can only be between 1500 and 2019
+    if start > 2019 or start < 1500:                    # start year can only be between 1500 and 2019
         start = 1800
-    if end > 2019 or end < 1500:                  # end year can only be between 1500 and 2019
+    if end > 2019 or end < 1500:                        # end year can only be between 1500 and 2019
         end = 2019
-    if start > end:                               # start cannot be greater than end
+    if start > end:                                     # start cannot be greater than end
         start, end = end, start
-    if smoothing < 0:                             # smoothing cannot be negative
+    if smoothing < 0:                                   # smoothing cannot be negative
         smoothing = -smoothing
     
     url = (
