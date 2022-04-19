@@ -66,7 +66,7 @@ def get(query):
 #     Input:   query string, start year,                  #
 #              end year, and smoothing amount             #
 #     Outputs: google ngram url string,                   #
-#              actual search term, star year, end year    #
+#              actual search term, start year, end year   #
 #                                                         #
 #*********************************************************#
 def getURL(query, start=1800, end=2019, smoothing=0, **kwargs):
