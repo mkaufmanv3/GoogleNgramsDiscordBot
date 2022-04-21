@@ -11,8 +11,8 @@
 
 import time
 import discord
-from functions import plot
 from datetime import datetime as dt
+from functions import plot, raiseException
 
 TOKEN = ''
 
@@ -56,8 +56,8 @@ async def on_message(message):
     #****************************#
     if message.content.startswith('.'):
         query = message.content
-        try: plot(query)
-        except: pass
+        try:  plot(query)
+        except Exception as e:  raiseException(e,60,__file__)
         await message.channel.send(file=discord.File('pic.png'))
         print(f"\t--> Completed query in {round(time.perf_counter()-start,3)} seconds\n")
     
