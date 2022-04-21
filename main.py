@@ -35,9 +35,9 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    # DM handler
+    
+    # Ignore direct messages
     if not message.guild and message.author != client.user:
-        await message.channel.send("u r gay")
         return
 
     # Don't listen to self
@@ -56,9 +56,8 @@ async def on_message(message):
     #****************************#
     if message.content.startswith('.'):
         query = message.content
-        print(f"\n>>>  {message.author.name} sent:  '{query}'", end='')
-        try:  plot(query)
-        except Exception as e:  print(f"\n>>>  Error @ 61:  {e}")
+        try: plot(query)
+        except: pass
         await message.channel.send(file=discord.File('pic.png'))
         print(f"\t--> Completed query in {round(time.perf_counter()-start,3)} seconds\n")
     
